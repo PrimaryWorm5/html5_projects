@@ -6,9 +6,16 @@
 <body>
 <canvas style="cursor: pointer;" id="canvas"></canvas>
 <script type="text/javascript">
+var canvas = document.getElementById('canvas')
+var ctx = canvas.getContext('2d')
+canvas.width = window.innerWidth-40;
+canvas.height = window.innerHeight-40;
+
 window.addEventListener('click', move)
 var mousex = 0;
 var mousey = 0;
+var ball = [];
+var countBall = prompt('Введите кол-во объектов и нажмите на любое место на поле для создания центра орбит(рекоммендация:2-50)')
 function move(){
 mousex = event.x;
 mousey = event.y;
@@ -26,14 +33,6 @@ xd:0,
 yd:0,
   })}
 }
-
-var canvas = document.getElementById('canvas')
-var ctx = canvas.getContext('2d')
-canvas.width = window.innerWidth-40;
-canvas.height = window.innerHeight-40;
-
-var ball = [];
-var countBall = prompt('Введите кол-во объектов и нажмите на любое место на поле для создания центра орбит(рекоммендация:2-50)')
 
 
 function draw() {
