@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<style type="text/css">
+body {
+	background-color: black;
+}	
+canvas {background-color: white; border-radius: 30px;}
+</style>
+
+<canvas style="background-image: url('giphy.gif');" id="canvas"></canvas>
+<script type="text/javascript">
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext('2d');
+	canvas.width = window.innerWidth-20;
+	canvas.height= window.innerHeight/1.1;
+var hero = new Image();
+var bullet = new Image();
+var enemy = new Image();
+hero.src = "uni.png";
+bullet.src = "bullet.png";
+enemy.src = "enemy.png";
+	drawHero()
+	var v = 0;
+	var x = 100;
+	var y = 200;
+	var bx = 10000;
+	var by = 10000;
+	var bv = 100;
+	var ex = 500;
+	var ey = 200;
+	var hp = 100;
+	var score = 0;
+function drawHero() {
+	requestAnimationFrame(drawHero)
+	ctx.clearRect(0,0,innerWidth,innerHeight);
+	ctx.drawImage(hero,x,y,100,100);
+	ctx.drawImage(bullet,bx,by,100,100);
+	ctx.drawImage(enemy,ex,ey,60,100);
+	x = x + v;
+	bx = bx + bv;
+	bv = bv/1.05;
+	if(v>=0 || v<0) {
+		v=v/1.1;
+	}
+	ex--;
+	ctx.font="40px Verdana"
+	ctx.fillStyle = "red";
+	ctx.fillRect(200,70,hp*5,10);
+	ctx.fillText("Здоровье: "+hp,200,50);
+	ctx.font="20px Verdana"
+	ctx.fillText("Счёт: "+score,600,50);
+    
+    	if (	ex<=x+60
+                && ey<=y+100
+                && x<=ex+60
+                && y<=ey+100
+                ) {
+    		alert("game over");	
+    	document.location.reload()
+
+    	}
+   if(hp<0) {
+   	hp = 100;
+   	score++;
+   	ex = 300+Math.random()*300;
+   	ey = 100+Math.random()*300;
+   }
+   if(ex<50) {
+   	ex = 300+Math.random()*300;
+   	ey = 100+Math.random()*300;
+   }
+if (	ex<=bx+100
+                && ey<=by+100
+                && bx<=ex+100
+                && by<=ey+100
+                ) {
+	hp=hp-1;
+	}	}
+document.onkeydown = checkKey;
+function checkKey(e) {
+
+    e = e || window.event;
+    if (e.keyCode == '37') {
+       v=-5;
+    }
+    else if (e.keyCode == '39') {
+       v=5;
+    }
+    else if (e.keyCode == '38') {
+       y=y-10;
+    }
+    else if (e.keyCode == '40') {
+       y=y+10;
+    }
+    else if (e.keyCode == '32') {
+	shot()
+    }}
+function shot() {
+	bv = 10;
+	bx = x + 100;
+	by = y;
+}
+</script>
+</body>
+</html>
