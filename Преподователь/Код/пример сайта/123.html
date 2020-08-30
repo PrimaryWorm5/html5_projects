@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Моё имя Антон</title>
+</head>
+<body>
+<center><h1>Антон</h1></center>
+<img src="enemy.png">
+<div id="div" class="menu"><div class="danya">
+<li><i>Лера</i>
+<li><i>Даня</i>
+<li><i>Егор</i>
+	<marquee>привет</marquee>
+	<br><button onclick="red()">Пуш</button>
+</div></div>
+<script type="text/javascript">
+	var r = 0;
+	function red(){
+		r=r+0.1;
+		document.getElementById('div').style.background = 'rgba(255,0,0,'+r+')'
+	}
+</script>
+<style type="text/css">
+	.danya{margin:50px;}
+	.menu {
+		width: 900px;
+		height: 500px;
+		border:5px solid black;
+		position: absolute;
+		left: 400px;
+		top:100px;
+	}
+</style>
+</body>
+</html>

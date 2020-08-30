@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var r = 0;
+		var g = 0;
+		var b = 0;
+		function incr(){
+			document.getElementById('text').style.color = "rgb("+r+","+g+","+b+")"
+			r+=20;
+		}
+		function decr(){
+			document.getElementById('text').style.color = "rgb("+r+","+g+","+b+")"
+			r-=20;
+		}
+		function incg(){
+			document.getElementById('text').style.color = "rgb("+r+","+g+","+b+")"
+			g+=20;
+		}
+		function decg(){
+			document.getElementById('text').style.color = "rgb("+r+","+g+","+b+")"
+			g-=20;
+		}
+		function incb(){
+			document.getElementById('text').style.color = "rgb("+r+","+g+","+b+")"
+			b+=20;
+		}
+		function decb(){
+			document.getElementById('text').style.color = "rgb("+r+","+g+","+b+")"
+			b-=20;
+		}
+
+	</script>
+	<h5 id="write"></h5>
+	<h1 id="text">text</h1>
+	Красный: <button onclick="incr()">+</button>
+	<button onclick="decr()">-</button>
+	<br>
+	Зеленый: <button onclick="incg()">+</button>
+	<button onclick="decg()">-</button>
+	<br>
+	Голубой: <button onclick="incb()">+</button>
+	<button onclick="decb()">-</button>
+	<br>
+<canvas id="canvas" style="border:1px solid black"></canvas>
+<script type="text/javascript">
+	var canvas = document.getElementById("canvas"); 
+	var ctx = canvas.getContext('2d');
+	canvas.width = 1340;
+	canvas.height = 610;
+	ctx.beginPath()
+	ctx.moveTo(0,400)
+	ctx.lineTo(700,550)
+	ctx.lineTo(900,300)
+	ctx.lineTo(1300,550)
+	ctx.stroke()
+	ctx.moveTo(240,450)
+	ctx.lineTo(780,450);
+	ctx.stroke()
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<style type="text/css">
+		#r{background-color: red;color: white;border:1px solid red;border-radius: 30px;}
+		#b{background-color: black;color: white;border:1px solid black;border-radius: 30px;}
+	</style>
+Введите вашу ставку <input id="t" type="numbers"> 
+<button id="r" onclick="red()">Red</button>
+<button id="b" onclick="black()">Black</button>
+<br>
+Ваш баланс: <b id="balance">0</b>$
+<script type="text/javascript">
+var bet;
+var balance = 1000;
+var r;
+document.getElementById('balance').innerHTML = balance;
+function red() {
+bet = document.getElementById('t').value;
+if(bet<=balance){
+balance=balance-bet;
+r=Math.random();
+r=Math.round(r);
+if(r==1){alert("Вы выиграли "+bet*2+" $");balance=balance+bet*2}
+else{alert("Вы проиграли "+bet+" $");}
+document.getElementById('balance').innerHTML = balance;
+}
+else{alert('У вас столько нет')}
+}
+function black() {
+bet = document.getElementById('t').value;
+if(bet<=balance){
+balance=balance-bet;
+r=Math.random();
+r=Math.round(r);
+if(r==0){alert("Вы выиграли "+bet*2+" $");balance=balance+bet*2}
+else{alert("Вы проиграли "+bet+" $");}
+document.getElementById('balance').innerHTML = balance;
+}
+else{alert('У вас столько нет')}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<style type="text/css">
+	#hero1 {
+		border:1px solid black;
+		position: absolute;
+		animation-name: hero1; 
+		animation-duration: 15s;
+		animation-iteration-count: infinite;
+	}
+	#hero2 {
+border:1px solid black;
+		position: absolute;
+		animation-name: hero2;
+		top: 200px; 
+		animation-duration: 15s;
+		animation-iteration-count: infinite;
+	}
+	@keyframes hero2{
+	0% {top: 200px;
+		border:0px solid black;
+		transform: rotate(0deg);
+	}
+	50% {top: 300px;	
+		border:10px solid red;
+		transform: rotate(540deg);
+	}
+	100% {top: 200px;
+		border:0px solid black;
+		transform: rotate(0deg);
+	}}
+	@keyframes hero1{
+	0% {top: 0px;
+		border:0px solid black;
+		transform: rotate(0deg);
+	}
+	50% {top: 500px;	
+		border:10px solid red;
+		transform: rotate(900deg);
+	}
+	100% {top: 0px;
+		border:0px solid black;
+		transform: rotate(0deg);
+	}
+	}
+</style>
+<img id="hero1" width="300px" src="1.png">
+<img id="hero2" width="300px" src="2.png">
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+<script type="text/javascript">
+	var canvas = document.getElementById('canvas')
+	var ctx = canvas.getContext("2d")
+	canvas.width = window.innerWidth-40;
+	canvas.height = window.innerHeight-40;
+
+	var ball = [];
+	var countBall = 5;
+
+	for(var i = 0; i<countBall;i++){
+	ball.push({
+		x: Math.random()*(100+innerWidth-200),
+		y: Math.random()*(100+innerHeight-200),
+		vx: (Math.random()-0.5)*5,
+		vy: (Math.random()-0.5)*5,
+		cr: Math.random()*255,
+		cg: Math.random()*255,
+		cb: Math.random()*255,
+	})
+}
+
+	function draw() {
+		ctx.clearRect(0,0,innerWidth,innerHeight);
+		ctx.beginPath()
+		for(var i =0; i<countBall;i++){
+		var b = ball[i];
+		ctx.moveTo(b.x,b.y)
+		ctx.arc(b.x,b.y,10,0,7);
+		ctx.fillStyle="rgb("+b.cr+","+b.cb+","+b.cg+")"
+		}
+		ctx.fill()
+		animate()
+	}
+	function animate() {
+		for(var i = 0;i<countBall;i++){
+			var b = ball[i];
+		b.x = b.x + b.vx;
+		b.y = b.y + b.vy;
+		if(b.x>innerWidth-30 || b.x<30){b.vx=-b.vx;}
+		if(b.y>innerHeight-30 || b.y<30){b.vy=-b.vy;}
+		}
+	}
+setInterval(draw,16)
+</script>
+</body>
+</html> 

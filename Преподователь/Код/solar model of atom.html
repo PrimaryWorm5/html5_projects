@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+<script type="text/javascript">
+    var canvas = document.getElementById('canvas')
+    var ctx = canvas.getContext("2d")
+    canvas.width = window.innerWidth-40;
+    canvas.height = window.innerHeight-40;
+    var ball = [];
+    var countBall = 100;
+    var x = innerWidth/2;
+    var y = innerHeight/2;
+    window.addEventListener('click',move)
+    for(var i = 0; i<countBall;i++){
+    ball.push({
+        x: Math.random()*(100+innerWidth-200),
+        y: Math.random()*(100+innerHeight-200),
+        velocity: 1000+Math.random()*9000,
+        vx: (Math.random()-0.5)*5,
+        vy: (Math.random()-0.5)*5,
+        xd: ball.x - x,
+        yd: ball.y - y,
+    })
+}
+ 
+    function draw() {
+        ctx.clearRect(0,0,innerWidth,innerHeight);
+        ctx.beginPath()
+        ctx.arc(x,y,50,0,7)
+        ctx.fill()
+        ctx.beginPath()
+        for(var i =0; i<countBall;i++){
+        var b = ball[i];
+        ctx.moveTo(b.x,b.y)
+        ctx.arc(b.x,b.y,10,0,7);
+        }
+        ctx.fill()
+        animate()
+    }
+    function move(){
+    x=event.x;
+    y=event.y
+    }
+    function animate() {
+        
+        for(var i = 0;i<countBall;i++){
+            var b = ball[i];
+        b.xd=x-b.x
+        b.yd=y-b.y
+        b.vx = b.vx+b.xd/b.velocity
+        b.vy = b.vy+b.yd/b.velocity
+        b.x = b.x + b.vx;
+        b.y = b.y + b.vy;
+        }
+    }
+setInterval(draw,16)
+</script>
+</body>
+</html> 

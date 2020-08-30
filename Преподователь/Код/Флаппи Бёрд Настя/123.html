@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<style type="text/css">
+body{background-image:url('папапапапапапапапап.png');
+background-size: 100%;
+animation: bg 8s infinite linear;
+}
+
+@keyframes bg{
+from{background-position:1366px 0px}
+to{background-position: 0px 0px}
+}
+   #hero{
+   position: fixed;
+   width: 150px;
+   }
+   #туба
+   {
+   width: 300px;
+   height: 1330px;
+   position: fixed;
+   }
+   #туба1
+   {
+  transform: rotate(180deg);
+   width: 300px;
+   height: 1330px;
+   position: fixed;
+   }
+body{
+   background-image: url(https://github.com/sourabhv/FlapPyBird/blob/master/assets/sprites/background-day.png?raw=true);
+   background-size: 53%;
+   }
+</style>
+<img src="https://github.com/sourabhv/FlapPyBird/blob/master/assets/sprites/yellowbird-midflap.png?raw=true" id="hero">
+<img src="https://github.com/sourabhv/FlapPyBird/blob/master/assets/sprites/pipe-green.png?raw=true" id="туба">
+<img src="https://github.com/sourabhv/FlapPyBird/blob/master/assets/sprites/pipe-green.png?raw=true" id="туба1">
+<script type="text/javascript">
+var hero = document.getElementById('hero')
+var туба = document.getElementById('туба')
+var туба1 = document.getElementById('туба1')
+
+var y =650;
+var vy =0;
+var g =0;
+var x =350;
+var v =0;
+var ex =0;
+var ey =1000;
+var ev =1;
+function draw() {
+hero.style.top = y+ 'px'
+hero.style.left = x+ 'px'
+туба.style.left = ex+ 'px'
+туба1.style.left = ex+ 'px'
+туба.style.top = ey+ 'px'
+туба1.style.top = -1700+ey+ 'px'
+y=y+vy;
+vy=vy+g;
+ex=ex-ev;
+ev+=0.01
+if (			ex<=x+150
+                && ey-1700<=y+100
+                && x<=ex+300
+                && y<=ey-1700+1300
+                ){alert('2')}
+
+if (			ex<=x+150
+                && ey<=y+100
+                && x<=ex+300
+                && y<=ey+1330
+                ){alert('3')}
+if(ex<=-300){
+ex=3000
+ey=100+Math.random()*1500
+}
+}
+window.addEventListener("keydown",f)
+function f() {
+if (event.keyCode == "38") {vy=-15	;g=0.4}
+}	
+setInterval(draw,16)
+ </script>
+</body>
+  </html>

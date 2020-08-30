@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</style>
+  <meta charset="utf-8">
+  <title>particles.js</title>
+  <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+  <meta name="author" content="Vincent Garreau" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
+</head>
+<body>
+<script type="text/javascript">
+	window.addEventListener('keydown',hide);
+	var k = 1;
+	function hide(){
+		if(event.code =="NumpadAdd"){
+			if(k>0){
+		document.getElementById('menu').style.left = 50+"%";}
+		else{
+		document.getElementById('menu').style.left = 500+"%";}
+k=-k;
+		}
+	}
+</script>
+<div id="menu">
+<li style="color: #1b262c">ØGoogle: 
+	<a id="a1" href="https://keep.google.com/u/0/">Notes</a>
+	<a id="a1" href="https://www.youtube.com/">YouTube</a>
+	<a id="a1" href="https://music.youtube.com/">Music</a>
+	<a id="a1" href="https://drive.google.com/drive/u/0/my-drive">Drive</a>
+<li style="color: #0f4c81">ØTorrent: 
+<li style="color: #ed6663">ØSample text: 
+<li style="color: #ffa372">ØSample text: 
+
+</div>
+	<div id="weather"><!-- weather widget start --><a target="_blank" href="https://www.booked.net/weather/kiev-18881"><img width="300px;" src="https://w.bookcdn.com/weather/picture/32_18881_1_1_e74c3c_250_c0392b_ffffff_ffffff_1_2071c9_ffffff_0_6.png?scode=124&domid=w209&anc_id=88218"  alt="booked.net"/></a><!-- weather widget end --></div>
+<style type="text/css">
+	#weather {
+		position: absolute;
+		opacity: 0.7;
+		left: 13%;
+		top: 25%;
+	}
+	#a1 {
+		margin-left: 5px; 
+		margin-right: 5px; 
+		text-decoration: none;
+		color: #1b262c;
+	}
+	#menu{
+font-family: 'Arvo', serif; 
+/*font-family: 'Lobster', cursive;*/
+/*font-family: 'Raleway', sans-serif;*/
+		background-color: rgba(100,0,0,.3);
+		position: fixed;
+		width: 40%;
+		left: 500%;
+		height:  70%;
+		padding: 2%;
+		list-style-type: none;
+		text-decoration: none; 
+		top: 10%;
+	}
+	li {
+		opacity: 0.8;
+		margin: 4%;
+		font-size: 200%;
+	}
+</style>
+
+<!-- count particles -->
+
+<!-- particles.js container -->
+<div id="particles-js"></div>
+
+<!-- scripts -->
+<script src="../particles.js"></script>
+<script src="js/app.js"></script>
+
+<!-- stats.js -->
+<script src="js/lib/stats.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<html>
+<head>
+    <title>gg</title>
+</head>
+<body>
+<img class="hero"width="100" style="transform: scaleX(-1);" id="hero1" src="enemy.png">
+<img class="hero"width="100" id="hero2" src="uni.png">
+<div id="poloska"></div>
+<div id="poloskaw"></div>
+<div class="m" id="m1" align="center">Начало</div>
+<div class="m" id="m2"></div>
+<div class="m" id="m3"></div>
+<div class="m" id="m4"></div>
+<div class="m" id="m5"></div>
+<div class="m" id="m6"></div>
+<div class="m" id="m7"></div>
+<div class="m" id="m8"></div>
+<div class="m" id="m9"></div>
+<div class="m" id="m10" align="center">Конец</div>
+<style type="text/css">
+    .hero{position: absolute;z-index: 999;}
+    .m{
+        background-color: #CD8054;
+        width: 125px;
+        height: 30px;
+        border-radius: 100px 20px;
+        position: absolute;
+        top: 200px;
+    }
+#m1{left: 0px;}
+#m2{left: 200px}
+#m3{left: 400px;}
+#m4{left: 600px;}
+#m5{left: 800px;}
+#m6{top: 400px;left: 800px;}
+#m7{top: 400px;left: 600px;}
+#m8{top: 400px;left: 400px;}
+#m9{top: 400px;left: 200px;}
+#m10{top: 400px;}
+#poloska{background-color: #CD8054; width: 999px;top: 210px;height: 10px;position: absolute;}
+#poloskaw{background-color: #CD8054; width: 999px;top: 410px;height: 10px;position: absolute;}
+body{
+	background-image: linear-gradient(-45deg,teal,#f5b971);
+	background-size: 400% 400%;
+	animation:10s ease ab infinite;
+}
+@keyframes ab{
+	0%{background-position:100% 50%;}
+	50%{background-position: 0% 50%;}
+	100%{background-position:100% 50%;}
+}
+#roll{position: absolute;border-radius: 30px;width: 50px;height: 50px;background-color: red;color: white;border:1px solid black;left: 200px;}
+#roll:hover{background-color: darkred;cursor: pointer;}
+#dice {
+    position: absolute;
+    font-size: 48px;
+    left: 400px;
+}
+@keyframes dice{
+    from{transform: rotate(0deg);font-size: 120px;opacity: 0;}
+    to{transform: rotate(360deg);font-size: 48px;opacity: 1;}
+}
+</style>
+<button id="roll" onclick="roll()" align="center">Roll</button>
+<b id="dice">0</b>
+<script type="text/javascript">
+    var p1 = document.getElementById('hero1');
+    var p2 = document.getElementById('hero2');
+    var px1=-20;
+    var py1=20;
+    var px2=20;
+    var py2=120;
+    var ka = 1;
+    function f() {
+    p1.style.left = px1+'px';
+    p1.style.top = py1+'px';
+    p2.style.left = px2+'px';
+    p2.style.top = py2+'px';
+	}
+    var k = 1;
+    function roll(){
+    var dice = 1+Math.random()*3;
+    dice = Math.round(dice)
+    document.getElementById('dice').innerHTML = dice;
+    document.getElementById('dice').style.animation = "dice 1s "+k+" linear";
+    k++;
+
+    }
+	function animation(){
+		if(ka>0){py1+=10;py2+=10;}
+			else{py1-=10;py2-=10;}
+		ka=-ka;
+	}
+setInterval(f,16)
+setInterval(animation,250)
+</script>
+</body>
+</html>

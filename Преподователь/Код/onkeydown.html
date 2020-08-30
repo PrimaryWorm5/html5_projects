@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js</title>
+	<link rel="icon" href="elektro-men2.png" type="image/x-icon">
+</head>
+<body>
+    <style type="text/css">
+    	.letters {
+    		position: absolute;
+    		font-size: 60px;
+    		visibility: hidden;
+    	}
+    	#H{
+    		left: 100px;
+    		top: 300px;
+    	}
+    	#E{
+    		left: 180px;
+    		top: 300px;
+    	}
+    	#L1{
+    		left: 260px;
+    		top: 300px;
+    	}
+    	#L2{
+    		left: 340px;
+    		top: 300px;
+    	}
+    	#O1{
+    		left: 420px;
+    		top: 300px;
+    	}
+    	#W{
+    		left: 700px;
+    		top: 300px;
+    	}
+    	#O2{
+    		left: 780px;
+    		top: 300px;
+    	}
+    	#R{
+    		left: 860px;
+    		top: 300px;
+    	}
+    	#L3{
+    		left: 940px;
+    		top: 300px;
+    	}
+    	#D{
+    		left: 1020px;
+    		top: 300px;
+    	}
+    	@keyframes h{
+            0% {top: -80px;transform:rotate(0deg);}
+        	100% {top: 300px}
+        }
+        @keyframes e{
+            0% {left: -80px;transform:rotate(0deg);}
+        	100% {left: 180px}
+        }
+        @keyframes l1{
+            0% {top: 1280px;transform:rotate(0deg);}
+        	100% {top: 300px}
+        }
+        @keyframes l2{
+            0% {top: 1280px;transform:rotate(0deg);}
+        	100% {top: 300px}
+        }
+        @keyframes o1{
+            0% {left: -80px;transform:rotate(0deg);}
+        	100% {left: 420px}
+        }
+        @keyframes w{
+            0% {top: -80px;transform:rotate(0deg);}
+        	100% {top: 300px}
+        }
+        @keyframes o2{
+            0% {left: 1280px;transform:rotate(0deg);}
+        	100% {left: 780px}
+        }
+        @keyframes r{
+            0% {top: -80px;transform:rotate(0deg);}
+        	100% {top: 300px}
+        }
+        @keyframes l3{
+            0% {left: 1280px;transform:rotate(0deg);}
+        	100% {left: 940px}
+        }
+        @keyframes d{
+            0% {top: -80px;transform:rotate(0deg);}
+        	100% {top: 300px}
+        }
+    </style>
+    <div class="letters" id="H">H</div>
+    <div class="letters" id="E">E</div>
+    <div class="letters" id="L1">L</div>
+    <div class="letters" id="L2">L</div>
+    <div class="letters" id="O1">O</div>
+    <div class="letters" id="W">W</div>
+    <div class="letters" id="O2">O</div>
+    <div class="letters" id="R">R</div>
+    <div class="letters" id="L3">L</div>
+    <div class="letters" id="D">D</div>
+    <script type="text/javascript">
+    	document.addEventListener('keydown',show);
+            document.getElementById('H').style.transform = "rotate("+Math.random()*360+"deg)"
+            document.getElementById('E').style.transform = "rotate("+Math.random()*360+"deg)"
+            document.getElementById('L1').style.transform = "rotate("+Math.random()*360+"deg)"
+            document.getElementById('L2').style.transform = "rotate("+Math.random()*360+"deg)"
+            document.getElementById('L3').style.transform = "rotate("+Math.random()*360+"deg)"
+            document.getElementById('O1').style.transform = "rotate("+Math.random()*360+"deg)"
+            document.getElementById('O2').style.transform = "rotate("+Math.random()*360+"deg)"
+            document.getElementById('W').style.transform = "rotate("+Math.random()*360+"deg)"
+            document.getElementById('R').style.transform = "rotate("+Math.random()*360+"deg)"
+            document.getElementById('D').style.transform = "rotate("+Math.random()*360+"deg)"
+    	function show() {
+    		if (event.code=="KeyH") {
+    			document.getElementById('H').style.visibility = 'visible';
+    			document.getElementById('H').style.animation = "h 5s 1";
+    		}
+    		if (event.code=="KeyE") {
+    			document.getElementById('E').style.visibility = 'visible';
+    			document.getElementById('E').style.animation = "e 5s 1";
+    		}
+    		if (event.code=="KeyL") {
+    			document.getElementById('L1').style.visibility = 'visible';
+    			document.getElementById('L1').style.animation = "l1 5s 1";
+    		}
+    		if (event.code=="KeyL") {
+    			document.getElementById('L2').style.visibility = 'visible';
+    			document.getElementById('L2').style.animation = "l2 5s 1";
+    		}
+    		if (event.code=="KeyO") {
+    			document.getElementById('O1').style.visibility = 'visible';
+    			document.getElementById('O1').style.animation = "o1 5s 1";
+    		}
+    		if (event.code=="KeyW") {
+    			document.getElementById('W').style.visibility = 'visible';
+    			document.getElementById('W').style.animation = "w 5s 1";
+    		}
+    		if (event.code=="KeyO") {
+    			document.getElementById('O2').style.visibility = 'visible';
+    			document.getElementById('O2').style.animation = "o2 5s 1";
+    		}
+    		if (event.code=="KeyR") {
+    			document.getElementById('R').style.visibility = 'visible';
+    			document.getElementById('R').style.animation = "r 5s 1";
+    		}
+    		if (event.code=="KeyL") {
+    			document.getElementById('L3').style.visibility = 'visible';
+    			document.getElementById('L3').style.animation = "l3 5s 1";
+    		}
+    		if (event.code=="KeyD") {
+    			document.getElementById('D').style.visibility = 'visible';
+    			document.getElementById('D').style.animation = "d 5s 1";
+    		}
+    	}
+    </script>
+</body>
+</html>

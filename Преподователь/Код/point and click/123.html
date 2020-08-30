@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<style type="text/css">
+
+body{background-color: black}
+	#hero{
+		width: 200px;
+		height: 395px;
+		position: fixed;
+		background-size: 100%;
+		left: 100px;
+		top: 100px;
+		background-repeat: no-repeat;
+	}
+</style>
+<div id="hero"></div>
+<script type="text/javascript">
+
+	function draw(){
+		document.getElementById('hero').style.backgroundImage="url(idle.png)"
+	}
+	setInterval(draw,32)
+</script>
+</body>
+</html>

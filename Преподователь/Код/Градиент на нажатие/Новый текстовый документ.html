@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<style type="text/css">
+	canvas{border:1px solid black;}
+</style>
+<center><canvas id="canvas"></canvas>
+<script type="text/javascript">
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext('2d');
+	canvas.width = 1200;
+	canvas.height = 600;
+	var x = 105;
+	var y = 300;
+	var r = 0.9;
+	var color = "black"
+	var red = 0;
+    document.addEventListener("keypress", name)
+	function name(){
+	ctx.beginPath();
+	ctx.arc(x,y,r,0,7)
+	ctx.strokeStyle = "rgb("+red+",0,0)";
+	ctx.stroke();
+	x=x+2;
+	r=r*1.01;
+
+	if(x>300){
+		red=red+0.5	}
+	if(x>900){return;}
+	}
+
+
+</script>
+</body>
+</html>

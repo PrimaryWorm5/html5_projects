@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<meta name="author" content="Chloe Chantelle">
+<title>/home/</title>
+<link rel="shortcut icon" href="img/snow.png" type="image/ico">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+
+<body>  
+<a href="https://www.youtube.com/watch?v=_LLCz1FCWrY"><img style="position: absolute; z-index: 999999; width: 200px; left: 5%; top: 45%;" src="img/girl.png">
+<img style="position: absolute; z-index: 999999; width: 200px; left: 85%; top: 15%;" src="img/uni.png"></a>
+<div id="bar">
+  <div class="bar_content">
+    <li><a class="link1" href="https://2ch.hk/">2ch.hk:</a>
+      <a class="linkc" href="https://2ch.hk/b/">/b/</a>
+      <a class="linkc" href="https://2ch.hk/v/">/v/
+      <a class="linkc" href="https://2ch.hk/cg/">/cg/
+      <a class="linkc" href="https://2ch.hk/wp/">/wp/</a>
+      <a class="linkc" href="https://2ch.hk/sex/">/sx/</a>
+      <a class="linkc" href="https://2ch.hk/mus/">/mus/</a>
+      <a class="linkc" href="https://2ch.hk/pr/">/pr/</a>
+      <a class="linkc" href="https://2ch.hk/s/">/s/</a>  </li>
+    <li><a class="link2" href="https://www.google.com/">Google:</a>
+      <a class="linkc" href="https://mail.google.com/mail/u/0/#inbox">Gmail</a>
+      <a class="linkc" href="https://translate.google.com/">Translate</a>
+      <a class="linkc" href="https://www.google.com.ua/maps/@50.4516903,30.3334741,10.96z?hl=ru&authuser=0">Maps</a>
+      <a class="linkc" href="https://drive.google.com/drive/u/0/my-drive">Drive</a>
+      <a class="linkc" href="https://keep.google.com/u/0/">Notes</a>  </li>
+    <li><a class="link3" href="">Social:</a>
+      <a class="linkc" href="https://web.telegram.org/">Telegram</a>
+      <a class="linkc" href="https://drawception.com/">Drawception</a> </li>
+    <li><a class="link4" href="">Media:</a>
+      <a class="linkc" href="https://www.youtube.com/">YouTube</a>
+      <a class="linkc" href="https://music.youtube.com/">Music</a> 
+      <a class="linkc" href="https://www7.fmovies.to/">Movies</a> 
+      <a class="linkc" href="https://yummyanime.com">Anime</a> </li>
+    <li><a class="link5" href="">Shopping:</a>
+      <a class="linkc" href="https://best.aliexpress.com/">AliExpress</a> 
+      <a class="linkc" href="https://rozetka.com.ua/">Rozetka</a> 
+      <a class="linkc" href="https://www.olx.ua/">Olx</a>
+      <a class="linkc" href="https://ek.ua/">ek</a> 
+      <a class="linkc" href="https://ek.ua/">Hotline</a> </li>
+    <li><a class="link6" href="">Downloads:</a>
+      <a class="linkc" href="https://www.3dscia.com/">3dscia</a> 
+      <a class="linkc" href="https://ciaspara3ds.blogspot.com/">3dsparas</a>
+      <a class="linkc" href="http://www.wiiiso.com/download/torrents-pal.php">Wii</a> 
+      <a class="linkc" href="https://rutracker.org/forum/search.php">Rutracker</a> </li>
+    <li><a class="link7" href="">Schedules:</a>
+      <a class="linkc" href="https://docs.google.com/spreadsheets/d/18jNT540DBazbMvYzRRMTHKygxO6erbKda-jQ11N-aKU/edit#gid=0">Work</a> 
+      <a class="linkc" href="http://e-rozklad.dut.edu.ua/timeTable/group">Sked</a>
+      <a class="linkc" href="http://poezdato.net/raspisanie-poezdov/svyatoshino--irpen/">Kiyv-Irp</a> 
+      <a class="linkc" href="http://poezdato.net/raspisanie-poezdov/irpen--svyatoshino/">Irp-Kyiv</a> </li>
+
+  </div>
+</div>
+<div id="context">
+          
+        <div id="snow"></div>
+        
+          <div class="hide" id="menu">
+    <ul>
+    
+<li><a target="_blank" href="https://twitter.com">Tweet</a></li>
+<li><a target="_blank" href="https://www.youtube.com/feed/subscriptions">YouTube</a></li>
+<li><a target="_blank" href="http://inbox.google.com">Inbox</a></li>
+<li><a target="_blank" href="https://soundcloud.com">Soundcloud</a></li>
+<li><a target="_blank" href="https://www.dropbox.com">Dropbox</a></li>
+
+    </ul>
+         </div> <!-- end context menu -->
+          
+</div>  <!-- end context -->
+
+<script>
+if (document.getElementById('context').addEventListener) {
+    document.getElementById('context').addEventListener('contextmenu', function(e) {
+            $("#menu").toggleClass("hide");
+            $("#menu").css(
+              {
+                position: "absolute",
+                top: e.pageY,
+                left: e.pageX
+              }
+            );
+            e.preventDefault();
+     }, false);
+}
+
+$(document).bind("click", function(event) {
+  document.getElementById("menu").className = "hide";
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<html>s
+<head>
+	<title></title>
+</head>
+<body>
+<canvas style="background-image: url('link.jpg'); background-size:100%;border:1px solid black" id="canvas"></canvas>
+<script type="text/javascript">
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext('2d');
+	canvas.width = window.innerWidth-40;
+	canvas.height = window.innerHeight-40;
+	var hero = new Image();
+	hero.src ="hero.png"
+	var enemy = new Image();
+	enemy.src = "преграда.png"
+
+	draw()
+	var x = 200;
+	var y = 500;
+	var ex = 800;
+	var w = 100;
+	var h = 100;
+	var g = 0.5;
+	var yv = 0;
+	var space = 2;
+    var score = 0;
+	function draw(){
+		requestAnimationFrame(draw)
+ctx.clearRect(0,0,innerWidth,innerHeight)
+		ctx.drawImage(hero,x,y,w,h);
+		ctx.drawImage(enemy,ex,440,60,60);
+		ex=ex-5;
+		y=y+5;
+		if(y>500-h){y=500-h;yv=0;space=2}
+		y=y+yv;
+		yv=yv+g;
+		ctx.beginPath();
+        ctx.fillStyle = "black"
+		ctx.rect(0,500,innerWidth,300);
+		ctx.fill()
+        ctx.font = "26px Verdana"
+        ctx.fillStyle = "white"
+            score=score+1;
+        ctx.fillText("Счёт: "+score,300,550)
+		if(ex<-100){
+			ex=innerWidth+Math.random()*700;
+}
+		if (ex<=x+75
+				&& 440<=y+100
+				&& x<=ex+60
+				&& y<=440+60
+				) {
+				alert("game over");
+			document.location.reload()
+		}
+
+
+	}
+
+
+document.onkeydown = checkKey;
+function checkKey(e) {
+    e = e || window.event;
+    if (e.keyCode == '38') {}
+    else if (e.keyCode == '32' && space>0) {y=y-10;yv=-15;space=space-1;}
+}
+
+</script>
+</body>
+</html>

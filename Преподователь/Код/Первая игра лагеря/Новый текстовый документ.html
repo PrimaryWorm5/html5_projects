@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<style type="text/css">
+		canvas{
+			background-image: url('');
+		}
+	</style>
+<canvas style="border:1px solid black" id="canvas"></canvas>
+<script type="text/javascript">
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	canvas.width = window.innerWidth-40;
+	canvas.height = window.innerHeight-40;
+
+	var hero = new Image();
+	var enemy = new Image();
+	hero.src = "uni.png";
+	enemy.src= "girl.png";
+	drawEnemy()
+	drawHero()
+	var x = 300;
+	var	y = 400;
+	var w = 100;
+	var h = 100;
+	var ex = 500;
+	var ey = 400;
+	var g = 0.3;
+	var v = 5;
+	var vx = 1;
+	var ev = 5;
+	var r = 0;
+	function drawHero() {		
+	requestAnimationFrame(drawHero)	
+	ctx.drawImage(hero,x,y,w,h);
+	ctx.font= "30px Verdana";
+	ctx.fillText("Рекорд: "+r,550,100)
+
+	y=y+v;
+	v=v+g;
+	x=x+vx;
+if(y>450) {
+	ctx.clearRect(0,0,innerWidth,innerHeight);
+	v=-v;
+	r=r+1;
+	}
+	if(vx>0) {
+		vx=vx-0.1;
+	}
+	if(vx<0) {
+		vx=vx+0.1;
+	}
+}
+	function drawEnemy() {	
+	requestAnimationFrame(drawEnemy)
+	ctx.drawImage(enemy,ex,ey,w,h+70);
+	if(ex>=innerWidth-80|| ex <=50) {ev = -ev} 
+    	if (	ex<=x+w
+                && ey<=y+h
+                && x<=ex+w
+                && y<=ey+h+70
+                ) {
+    		alert("game over");	
+    	document.location.reload()
+    	}
+	ex = ex +ev;
+	}
+document.onkeydown = checkKey;
+function checkKey(e) {
+
+    e = e || window.event;
+    if (e.keyCode == '38') {
+        // up arrow
+        v=-10;
+    }
+    else if (e.keyCode == '40') {
+        // down arrow
+        v=0;
+    }
+    else if (e.keyCode == '37') {
+       // left arrow
+       vx=-10;
+    }
+    else if (e.keyCode == '39') {
+       // right arrow
+       vx=10;
+    }
+    else if (e.keyCode == '32') {
+
+    }}
+</script>
+</body>
+</html>

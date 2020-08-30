@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<img id="car" src="https://opengameart.org/sites/default/files/spr_car4_0.png">
+<style type="text/css">
+body{
+	background-image: url(https://i.imgur.com/6q7cXaP.png);
+	background-size: 1900px;
+	animation:5s road infinite linear;
+}
+@keyframes road{
+	from{background-position: 1900px 0px}
+	to{background-position: 0px 0px}
+}
+#car{
+	position: absolute;
+	top: 500px;
+	transform: scaleX(-1);
+}	
+</style>
+<script type="text/javascript">
+	window.addEventListener('mousemove',f)
+var car = document.getElementById('car');
+	function f(){
+var mx = event.x;
+var my = event.y;
+		mx=mx/3
+		my=500+my/4.9;
+		car.style.left = mx+'px'; 
+		car.style.top = my+'px'; 
+	}
+</script>
+</body>
+</html>

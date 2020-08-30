@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<style type="text/css">
+	body{background-color: darkgray}
+	#main{
+		margin:10%;
+		width: 70%;
+		position: fixed;
+		height: 60%;
+		background-color: white;
+		padding: 30px;
+	}
+	.block{
+		position: relative;
+		top: 150px;
+		width: 200px;
+		height: 300px;
+		display: inline;
+		margin: 30px;
+		opacity: 0.5;
+	}
+	.block:hover{
+		opacity: 1;
+		cursor: pointer;
+	}
+	.hover{
+		width: 60%;
+		position: absolute;
+		left: 20%;
+		top: -20%;
+		border:5px solid black;
+		background-color: rgb(230,230,230);
+		visibility: hidden;
+		padding: 50px;
+	}
+	#ac{margin-left: 30px;margin-right: 30px;width: 200px;height: 50px;margin-top: 30px;opacity: 0.8;background-color: white;border:0px;}
+</style>
+<div id="main">
+	<div class="block"><img  onclick="show('h1')" width="200px" height="300px" src="1.png"></div>
+	<div class="block"><img  onclick="show('h2')" width="200px" height="300px" src="2.png"></div>
+	<div class="block"><img  onclick="show('h3')" width="200px" height="300px" src="3.png"></div>
+	<div class="block"><img  onclick="show('h4')" width="200px" height="300px" src="4.png"></div>
+	<div class="block"><img  onclick="show('h5')" width="200px" height="300px" src="5.png"></div>
+	<div class="hover" id="h1"><center><h1>Название</h1><img width="200px" src="1.png"><br>Говорят, что эта книга теперь запрещена не только в «политически корректной»
+Европе, но и даже и в России, которая якобы «поднялась с колен» (правда, только для
+того, чтобы встать раком…). Но как раз потому, что эта книга запрещена, её и надо
+прочитать – ну уж если не для того, чтобы расширить свой кругозор и улучшить своё
+понимание недавней истории, то хотя бы просто для того, чтобы понять, почему именно
+её запретили. Умный человек всегда отличался от барана именно тем, что мог
+выслушать всё, что угодно, но при этом составить о предмете своё независимое мнение.
+Поэтому нет абсолютно никакой опасности в прочтении этой книги для думающего
+человека (даже в случае если вы еврей и читать такие книги вам запретил ваш раввин).
+Это очень интересная книга, которую каждый образованный человек обязан прочесть –
+вне зависимости от того, коммунист он, еврей, космополит, патриот, или же поборник
+так называемых «демократических» ценностей. Эта книга и тот образ мышления,
+который она представляет, это, прежде всего, то, что послужило предпосылкой для
+возникновения второй мировой войны, в результате которой тот самый старый образ
+мышления (который был присущ, кстати, не только Гитлеру, но и его политическим
+противникам, включая тех же красных, и тех же французов и англичан) был умерщвлён и
+заменён так называемым «новым мышлением», которое сделало серьёзную новую войну
+невозможной именно по причине необратимых изменений в человеческом менталитете.<button id="ac">◄</button><button id="ac">►</button></center><button onclick="show()" style="width: 30px;height: 30px;background-color: white;border:1px solid black;position: absolute;top: 10px;right: 10px;">X</button></div>
+	<div class="hover" id="h2">hover 2</div>
+	<div class="hover" id="h3">hover 3</div>
+	<div class="hover" id="h4">hover 4</div>
+	<div class="hover" id="h5">hover 5</div>
+</div>
+<script type="text/javascript">
+	function show(id){
+		document.getElementById('h1').style.visibility = "hidden"
+		document.getElementById('h2').style.visibility = "hidden"
+		document.getElementById('h3').style.visibility = "hidden"
+		document.getElementById('h4').style.visibility = "hidden"
+		document.getElementById('h5').style.visibility = "hidden"
+		document.getElementById(id).style.visibility = "visible"
+	}
+</script>
+</body>
+</html>

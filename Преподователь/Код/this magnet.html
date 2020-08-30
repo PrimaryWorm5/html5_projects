@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script type="text/javascript">
+window.addEventListener('mousemove', move)
+var mousex = 0;
+var mousey = 0;
+function move(){
+ mousex = event.x;
+ mousey = event.y;
+}
+
+var canvas = document.getElementById('canvas')
+var ctx = canvas.getContext('2d')
+canvas.width = window.innerWidth-40;
+canvas.height = window.innerHeight-40;
+
+var ball = [];
+var countBall = 1000
+
+for(var i = 0; i<countBall;i++){
+ball.push({
+x: Math.random()*innerWidth-100,
+y: Math.random()*innerHeight-100,
+vx: (Math.random()-0.5)*5,
+vy: (Math.random()-0.5)*5,
+cr: Math.random()*255,
+cg: Math.random()*255,
+cb: Math.random()*255,
+   })}
+
+function draw() {
+ctx.clearRect(0,0,innerWidth,innerHeight);
+ctx.beginPath()
+for(var i = 0; i<countBall;i++){
+var b = ball[i];
+ctx.moveTo(b.x,b.y)
+ctx.arc(b.x,b.y,30,0,7);
+ctx.fillStyle="rgb("+b.cr+","+b.cg+","+b.cb+")"
+}
+ctx.fill()
+animate()
+}
+function animate() {
+for(var i = 0; i<countBall;i++){
+var b = ball[i];
+b.x = b.x + b.vx;
+b.y = b.y + b.vy;
+if(b.x>canvas.width-30){b.vx=-b.vx}
+if(b.y>canvas.height-30){b.vy=-b.vy}
+if(b.x<0+30){b.vx=-b.vx}
+if(b.y<0+30){b.vy=-b.vy}
+if(b.x>mousex){b.vx-=0.1}
+if(b.y>mousey){b.vy-=0.1}
+if(b.x<mousex){b.vx+=0.1}
+if(b.x<mousex){b.vy+=0.1}
+}
+}
+setInterval(draw,16)
+</script>
+</body>
+</html>

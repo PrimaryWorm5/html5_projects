@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="cloud.ico" type="image/ico">
+	<title></title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script type="text/javascript">
+var cvs = document.getElementById('canvas');
+var ctx = cvs.getContext('2d');
+cvs.width = window.innerWidth-20;
+cvs.height = window.innerHeight-20;
+var x = 0;
+	y = 0;
+	function animate() {
+		requestAnimationFrame(animate)
+		ctx.clearRect(0,0,1400,1000);
+for (var i = 0; i < 200; i++) {
+x = Math.random()*innerWidth-20;
+y = Math.random()*innerHeight-20;
+ctx.beginPath();
+ctx.moveTo(x,y);
+ctx.lineTo(x,y+10);
+ctx.strokeStyle = "brown";
+ctx.stroke();
+
+}
+	}
+    document.addEventListener("keypress", animate)
+</script>
+</body>
+</html>

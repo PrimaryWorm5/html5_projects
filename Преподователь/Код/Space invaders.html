@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<style type="text/css">
+		body{
+			background-image: url(https://orsted.com/-/media/WWW/Images/Corp/Campaign/SpaceSafari/space-safari-background.png);
+			animation: b 5s infinite linear;
+			background-size: 100%;
+			cursor: none;
+					}
+					@keyframes b{
+						from{background-position: 0% 100%; }
+						to{background-position: 0% 0%; }
+					}
+					#laser{
+						width: 5px;
+						height: 40px;
+						position: fixed;
+						background-color: red;
+					}
+					#hero{
+						top: 100px;
+						width: 150px;
+						height: 70px;
+						position: fixed;
+						background-image: url(https://i.pinimg.com/originals/d2/b8/c8/d2b8c8dba33a42bec0a2daf0c430beff.png);
+						background-size: 100%;
+						transform: rotate(-90deg); 
+						cursor: none;
+						}
+						#enemy{
+						width: 100px;
+						height: 70px;
+						position: fixed;
+						background-image: url(https://www.pngkit.com/png/full/96-963888_space-invader-gif-png.png);
+						background-size: 100%;
+						}
+						#score{
+							text-align: center;
+							position: fixed;
+							width: 100%;
+							font-size: 72px;
+							color: white;
+						}
+						#hp{color: red;font-size: 50px;}
+	</style>
+	<div id="hero"></div>
+	<div id="enemy"></div>
+	<div id="laser"></div>
+	<div id="score"></div>
+	<div id="hp"></div>
+	<script type="text/javascript">
+
+		window.addEventListener('mousemove',move)
+		window.addEventListener('click',click)
+		var ex = 0;
+		var ey = 0;
+		var evx = -5+Math.random()*10
+		var evy = 50
+		var lx = 100;
+		var ly = -500;
+		var lw = 5;
+		var score = 0
+		var damage = 0
+		var hp = [
+		"♥ ♥ ♥",
+		"♥ ♥",
+		"♥",
+		""
+		]
+		function move(){
+		var mx = event.x-75;
+		var my = event.y;
+		document.getElementById('hero').style.left = mx+'px'
+		document.getElementById('hero').style.top = my+'px'
+		if(
+				ex<=mx+150 && 
+				ey<=my+70 && 
+				mx<=ex+100 && 
+				my<=ey+40){
+				ey=0;ex=Math.random()*innerWidth - 200;evx=-5+Math.random()*10;damage++
+			}
+		}
+		function draw_32(){
+			if(
+				ex<=lx+lw && 
+				ey<=ly+40 && 
+				lx<=ex+100 && 
+				ly<=ey+40){
+				ly=-200;ey=0;ex=Math.random()*innerWidth - 200;evx=-5+Math.random()*10;score++;lw+=0.5;
+			}
+			
+
+			ly+=-25
+		document.getElementById('laser').style.left = lx+'px'
+		document.getElementById('laser').style.width = lw+'px'
+		document.getElementById('enemy').style.top = ey+'px'
+		document.getElementById('enemy').style.left = ex+'px'
+		document.getElementById('laser').style.top = ly+'px'
+		document.getElementById('score').innerHTML ="Score:"+score 
+		document.getElementById('hp').innerHTML =hp[damage]
+		}
+		function draw_8(){
+			ex+=evx
+			ey+=evy
+		if(ey>innerHeight){ey=0;ex=Math.random()*innerWidth - 200;evx=-5+Math.random()*10;damage++}
+		document.getElementById('enemy').style.left = ex+'px'
+		document.getElementById('enemy').style.top = ey+'px'
+		}
+		function click(){
+			if(ly<-100){
+			lx = event.x
+			ly = event.y
+			}
+					}
+		setInterval(draw_8,1000)
+		setInterval(draw_32,50)
+	</script>
+</body>
+</html>

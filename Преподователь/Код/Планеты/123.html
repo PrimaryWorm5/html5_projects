@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<style type="text/css">
+		body {background-image: url(123.gif); background-size: 100%;}
+		#pl1 {
+			background-image: url(1.jpg);
+			width: 300px;
+			height: 300px;
+			background-size: 100%;
+			border-radius: 50%;
+			position: absolute;
+			bottom: 50px;
+			left: 100px;
+			animation-name: a;
+			animation-duration: 20s;
+			animation-iteration-count: infinite;
+		}
+		#pl2 {
+			background-image: url(2.jpg);
+			width: 550px;
+			height: 550px;
+			background-size: 100%;
+			border-radius: 50%;
+			position: absolute;
+			right: 50px;
+			bottom: -150px;
+			animation-name: b;
+			animation-duration: 48s;
+			animation-iteration-count: infinite;
+		}
+		#pl3 {
+			background-image: url(3.jpg);
+			width: 150px;
+			height: 150px;
+			background-size: 100%;
+			border-radius: 50%;
+			position: absolute;
+			left: 500px;
+			top: 50px;
+			animation-name: c;
+			animation-duration: 70s;
+			animation-iteration-count: infinite;
+		}
+		@keyframes a {
+			from {background-position:0px 0px}
+			to{background-position:300px 0px }
+		}
+		@keyframes b {
+			from {background-position:0px 0px}
+			to{background-position:-550px 0px }
+		}
+		@keyframes c {
+			from {background-position:0px 0px}
+			to{background-position:150px 0px }
+		}
+	</style>
+<div id="pl1"></div>
+<div id="pl2"></div>
+<div id="pl3"></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<canvas style="border:1px solid black;cursor: crosshair;" id="canvas"></canvas>
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth-40;
+canvas.height = window.innerHeight-40;
+n()
+window.addEventListener('click',function(){mx=event.x;my=event.y;ctx.strokeStyle="red"})
+var x = 100;
+var	y = 100;
+var	mx;
+var	my;
+var vx = 0;
+var vy = 0;
+var color = 'black'
+function n(){
+	ctx.clearRect(0,0,innerWidth,innerHeight);
+	requestAnimationFrame(n)
+	ctx.beginPath()
+	ctx.rect(x,y,25,25);
+	ctx.strokeStyle=color;
+	ctx.stroke();
+	x=x+vx;
+	y=y+vy;
+	if(x<mx){vx=1;}else{vx=-1;}
+	if(y<my){vy=1;}else{vy=-1;}
+}
+</script>
+</body>
+</html>

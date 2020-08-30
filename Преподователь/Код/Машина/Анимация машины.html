@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<style type="text/css">
+	body{background-image: url('Безымянный.png');
+	background-size: 100%;
+	animation:bg 8s infinite linear;
+}
+ @keyframes bg{
+ 	from{background-position: 1920px 0px}
+ 	to{background-position: 0px 0px}
+ }
+ #car{
+ 	width: 300px;
+ 	height: 300px;
+ 	position: absolute;
+ 	background-image: url(123.png);
+ 	background-size: 100%;
+ 	transform: scaleX(-1);
+ 	bottom: 0px;
+ 	animation:car 10s infinite;
+ }
+ #sun{
+ 	width: 200px;
+ 	height: 200px;
+ 	position: absolute;
+ 	border-radius: 50%;
+ 	right: 0px;
+ 	animation:sun 5s infinite;
+
+ }
+ @keyframes sun{
+ 	0%{background-color: rgb(255,255,0);}
+ 	50%{background-color: rgb(240,240,0);}
+ 	100%{background-color: rgb(255,255,0);}
+ }
+ @keyframes car{
+ 	0%{bottom: 0px;transform: rotate(0deg) scaleX(-1);}
+ 	10%{bottom: 10px;transform: rotate(-1deg) scaleX(-1);}
+ 	40%{bottom: -10px;transform: rotate(1deg) scaleX(-1);}
+ 	60%{bottom: 20px;transform: rotate(-1deg) scaleX(-1);}
+ 	100%{bottom: 0px;transform: rotate(1deg) scaleX(-1);}
+ }
+</style>
+<div id="sun"></div>
+<div id="car"></div>
+</body>
+</html>

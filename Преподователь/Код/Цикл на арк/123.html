@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<style type="text/css">
+		canvas {
+			border: 1px solid black;
+			margin: 50px;
+		}
+	</style>
+<canvas id="canvas"></canvas>
+<script type="text/javascript">
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext('2d');
+	var	z = 0;
+		r = 100;
+		rs = 0;
+		re = 0;
+	canvas.width = 1000;
+	canvas.height = 500;
+	rs=rs+0.1;
+	re=re+0.1;
+	// x=x+5;
+		ctx.arc(x,200,r,rs,re);
+	ctx.stroke()
+		var x = 150;
+for(var i = 0; i < 30; i++) {
+	ctx.beginPath()
+	rs = Math.random()*7;
+	re = Math.random()*7;
+	r=r+4;
+	if(i & 1){
+	ctx.strokeStyle = "red";}
+	else{
+	ctx.strokeStyle = "black";}
+	ctx.arc(x,100,r,rs,re);
+	ctx.stroke()}
+	setInterval(ani,100)
+</script>
+</body>
+</html>

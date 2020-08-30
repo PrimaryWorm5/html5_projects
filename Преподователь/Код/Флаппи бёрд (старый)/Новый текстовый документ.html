@@ -1,0 +1,288 @@
+    <!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <canvas  style="border: 1px solid black" id="canvas"><
+<style type="text/css">
+  body{
+    padding:0;
+    margin: 0;
+  }
+</style>
+<script type="text/javascript">
+    var cvs = document.getElementById("canvas");
+    var ctx = cvs.getContext("2d");
+  cvs.width = window.innerWidth-20;
+  cvs.height = window.innerHeight-20;
+    var x = 0;
+    var y = cvs.height/1.2;
+    var yp = 0;
+    var bird = new Image();
+    var yPos = y-260;
+    var vPos = 5;
+    var g = 0.4;
+    var xPos = 20
+    var grd = ctx.createLinearGradient(0, 0, cvs.width, cvs.height);
+    bird.src = "flappy_bird_bird.png";
+    var rep = new Image();
+    rep.src = "reeat.png"
+    var score = 0;
+    var enemy = [];
+    var bonus = [];
+    var yR = 0;
+    var enemyv = 1;
+    var go = new Audio('go.mp3');
+    var gop = 0;
+    var winp = 0;
+    var win = new Audio('win.mp3');
+
+        colors = 0;
+    enemy[0] = {
+        x:cvs.width,
+        y: cvs.height/1.5-50
+
+    }
+    bonus[0] = {
+        x:cvs.width,
+        y:cvs.height/1.5-20
+    }
+    function yourscore(){
+        ctx.font = "50px Verdana";
+        ctx.fillText("IQ: "+score,500,150);
+    }
+    function bonus() {
+        for (var k = 0; k< bonus.length; k++) {
+            ctx.beginPath();
+            ctx.fillStyle = 'pink';
+            ctx.fillRect(enemy[i].x, enemy[i].y, 150,  150)
+            if (enemy[i].x == 125) {
+            enemy.push({
+                x : cvs.width,
+                y : yR
+            })}
+
+            else if (
+                   enemy[i].x<=xPos+bird.width
+                && enemy[i].y<=yPos+bird.height
+                && xPos<=enemy[i].x+150
+                && yPos<=enemy[i].y+150
+                ){
+if(gop<1){
+go.play();
+gop++;
+}
+              yPos = 1000000;
+              repeat()
+
+              /*document.location.reload()*/
+            }
+
+        }
+
+
+        }
+    function Enemes(){
+        for (var i = 0; i < enemy.length; i++){
+            ctx.beginPath();
+if (colors<1) {
+    ctx.fillStyle = '#D4AC0D'//желтый
+}
+if (colors>=1 && colors <2) {
+    ctx.fillStyle = '#3498DB'//голубой
+}
+if (colors>=2 && colors <3) {
+    ctx.fillStyle = '#17A589'// бирюзовый 
+}
+if (colors>=3 && colors <4) {
+    ctx.fillStyle = '#E74C3C'// красный
+}
+        ctx.fillRect(enemy[i].x, enemy[i].y, 150,  150)
+        enemy[i].x=enemy[i].x-enemyv;
+        yR = 100+Math.random()*380;
+        if (enemy[i].x == 125) {
+            enemy.push({
+                x : cvs.width,
+                y : yR
+            })}
+            if(enemy[i].x==5){
+            score++;
+
+            }
+
+            else if (
+                   enemy[i].x<=xPos+bird.width
+                && enemy[i].y<=yPos+bird.height
+                && xPos<=enemy[i].x+150
+                && yPos<=enemy[i].y+150
+                ){
+                if(   color<1 && colors<1 
+                    ||color>=1 && color<2 && colors>=1 && colors<2
+                    ||color>=2 && color<3 && colors>=2 && colors<3
+                    ||color>=3 && color<4 && colors>=3 && colors<4
+                    ){
+                    // window.location.href = "http://example.com/new_url";
+              yPos = 1000000;
+              repeat()
+}
+              /*document.location.reload()*/
+            }
+
+        }
+
+
+
+        } 
+        function zxc(){
+            Enemes()
+            Enemes()
+            Enemes()
+            Enemes()
+            Enemes()
+            Enemes()
+            Enemes()
+            Enemes()
+            Enemes()
+            Enemes()
+
+            Enemes()
+            Enemes()
+            Enemes()
+            Enemes()
+            Enemes()
+            Enemes()
+
+          requestAnimationFrame(zxc)
+      }
+      
+        requestAnimationFrame(zxc)
+        
+
+     
+        /*if (20 + bird.width >= enemy[i].x 
+            && yPos + bird.height >= enemy[i].y){
+            location.reload()
+        }*/
+function repeat(){
+ctx.font = "50px Verdana"
+ctx.fillStyle = "black"
+ctx.fillText("Ваш   ", 380,150);  
+ctx.drawImage(rep, 10,10,100,100);
+
+if(gop<1){
+go.play();
+gop++;
+}
+enemyv=0;
+cancelAnimationFrame(zxc)
+cancelAnimationFrame(Enemes)
+cancelAnimationFrame(draww)
+requestAnimationFrame(repeat)
+if(gop<1){
+go.play();
+gop++;
+} }  
+
+ function drawBird(){
+        ctx.clearRect(0, 0, cvs.width, cvs.height)
+        drawG();
+
+        ctx.drawImage(bird, xPos, yPos);
+        draww();
+        yourscore()
+// function moveUp(){
+//         vPos = 10;
+//         vPos = -vPos;
+//     }
+ctx.beginPath();
+ctx.arc(600,50,40,0,Math.PI*2);
+if (color<1) {
+    ctx.fillStyle = '#D4AC0D'//желтый
+}
+if (color>=1 && color <2) {
+    ctx.fillStyle = '#3498DB'//голубой
+}
+if (color>=2 && color <3) {
+    ctx.fillStyle = '#17A589'// бирюзовый 
+}
+if (color>=3 && color <4) {
+    ctx.fillStyle = '#E74C3C'// красный
+}
+ctx.fill();
+
+        yPos=yPos+vPos;
+        vPos=vPos+g;
+if(winp<1 && score==10){
+win.play();
+winp++;
+}
+if(score==20){
+winp=0;
+win.play();
+winp++;
+}
+        if(yPos<=100) {
+yPos = 10000;
+if(gop<1){
+go.play();
+gop++;
+}enemyv=0;
+
+        	repeat()
+
+        }
+        if(yPos>=y) {
+yPos = 10000;
+if(gop<1){
+go.play();
+gop++;
+}enemyv=0;
+
+        	repeat()
+
+        }
+
+
+        if (yPos+bird.height < 0){
+            vPos=5;
+        }
+        if (yPos+bird.height > y) {
+            yPos = y-bird.height
+        }
+        /*
+        else if(yPos-bird.height-50 <y-76){
+            yPos+2
+        }
+    */
+
+    }
+    function drawG(){
+        grd.addColorStop(0, "red")
+        grd.addColorStop(1, "gray")
+        ctx.fillStyle = grd;
+        ctx.fillRect(0, 0, cvs.width, cvs.height)
+    }
+    function draww(){
+        ctx.beginPath();
+        ctx.fillStyle = "black"
+        ctx.fillRect(0,y,cvs.width, 200);
+          ctx.fillRect(0,yp,cvs.width,100);
+    }
+    document.addEventListener("keypress", moveUp)
+     //   document.addEventListener("keyup", moveDown)
+    function moveUp(){
+            color = Math.random()*4;
+            colors = Math.random()*4;
+        vPos = 10;
+        vPos = -vPos;
+    }
+
+  //  function moveDown(){
+  //    yPos+=50;
+   // }
+    setInterval(drawBird, 10);
+
+</script>
+</body>
+</html>
