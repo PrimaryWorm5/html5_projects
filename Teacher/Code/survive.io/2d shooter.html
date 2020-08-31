@@ -4,22 +4,98 @@
 	<title></title>
 </head>
 <body>
-<canvas id="canvas"></canvas>
+	<canvas id="canvas"></canvas>
 <script type="text/javascript">
+document.addEventListener('keydown', keyDown, false);
+document.addEventListener('keyup', keyUp, false);
+document.addEventListener('mousemove', mouse);
 var canvas = document.getElementById('canvas')
-var ctx = canvas.getContext('2d')
-canvas.width = window.innerWidth - 40;
-canvas.height = window.innerHeight - 40;
-var x = 50
-var y = 50
+var ctx = canvas.getContext("2d")
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+var x = 100,
+y = 100,
+hero_rotate = 0,
+mx = 0,
+my = 0,
+dx = 0,
+dy = 0,
+r = 0;
+var rightPressed = false;
+var leftPressed = false;
+var upPressed = false;
+var downPressed = false;
 function draw(){
 	ctx.clearRect(0,0,innerWidth,innerHeight)
-ctx.beginPath()
-ctx.arc(x,y,30,0,6.2)
-ctx.fillStyle = "green"
-ctx.fill()
-ctx.lineWidth = 5
-ctx.stroke()
+	ctx.beginPath()
+	ctx.arc(x,y,30,hero_rotate,hero_rotate+6.2)
+	ctx.fillStyle = "green"
+	ctx.fill()
+	ctx.lineWidth = 5
+	// ctx.lineTo(mx,my)
+	ctx.stroke()
+	if (rightPressed){
+		x+=3
+	}
+	if (leftPressed){
+		x-=3
+	}
+	if (upPressed) {
+		y-=3
+	}
+	if (downPressed){
+		y+=3
+	}
+	dx=x-mx
+	dy=y-my
+	var tan =dy/dx
+	var atan = Math.atan(tan)*180/Math.PI;
+	if(dx>=0 && dy>=0){atan+=180;}
+	else if(dx>=0 && dy<=0){atan-=180}
+		hero_rotate=atan/60
+	bg()
+}
+function bg(){
+		ctx.beginPath()
+	ctx.arc(350,300,30,0,7)
+	ctx.fillStyle = "lightgreen"
+	ctx.fill()
+	ctx.beginPath()
+	ctx.arc(350,300,10,0,7)
+	ctx.fillStyle = "brown"
+	ctx.fill()
+}
+function mouse(){
+mx = event.x;
+my = event.y;
+}
+function keyDown() {
+    if(event.keyCode == 68) {
+        rightPressed = true;
+    }
+    else if(event.keyCode == 65) {
+        leftPressed = true;
+    }
+    if(event.keyCode == 83) {
+    	downPressed = true;
+    }
+    else if(event.keyCode == 87) {
+    	upPressed = true;
+    }
+}
+function keyUp(){
+	if(event.keyCode == 68) {
+        rightPressed = false;
+    }
+    else if(event.keyCode == 65) {
+        leftPressed = false;
+    }
+    if(event.keyCode == 83) {
+    	downPressed = false;
+    }
+    else if(event.keyCode == 87) {
+    	upPressed = false;
+    }
 }
 setInterval(draw,32)
 </script>
