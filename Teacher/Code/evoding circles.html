@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<canvas  style="border:1px solid black"id="canvas"></canvas>
+<script type="text/javascript">
+var canvas =document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth-25;
+canvas.height = window.innerHeight-25;
+var ball = [];
+var countBall = 100;
+var vx=0;
+var vy=0;
+var mu=0;
+var mc=0;
+var xd=0;
+var yd=0;
+
+
+for (var i = 0; i<countBall;i++) 
+{
+	ball.push({
+    x:Math.random()*(110+innerWidth-200),
+    y:Math.random()*(137+innerHeight-200),
+  vx:-1+Math.random()*2,
+	vy:-1+Math.random()*2,
+  rx:0, ry:0, r:0, a:20, kdx:0, kdy:0, kd:0, dr:0,
+  })	
+
+}
+function p() 
+{
+ var mx = event.x;
+ var my = event.y;
+ mc=mx;
+ mu=my;
+}
+function draw() 
+{ 
+  
+  ctx.clearRect(0,0,innerWidth,innerHeight)
+	ctx.beginPath()
+	for (var i = 0; i<countBall;i++) 
+  {
+  var b = ball[i];
+  ctx.moveTo(b.x,b.y);
+  ctx.arc(b.x,b.y,b.a,0,7);
+  }
+  ctx.fillStyle = "hsl(50,50%,50%)"
+   ctx.fill()
+   draw2()
+}
+function draw2() 
+{
+	for (var i = 0; i<countBall;i++) 
+  {
+	var b=ball[i];
+	b.x=b.x+b.vx;
+    b.y=b.y+b.vy;
+
+    if (b.y>=555){b.vy=-b.vy}
+    if (b.y<=20){b.vy=-b.vy}
+    if (b.x>=1285){b.vx=-b.vx}
+    if (b.x<=20){b.vx=-b.vx}
+
+   // if (mc>b.x) {b.vx=b.vx+0.01}else{b.vx=b.vx-0.01}
+   //  if (mu>b.y) {b.vy=b.vy+0.01}else{b.vy=b.vy-0.01}	
+
+    b.rx= b.x-mc;
+    b.ry= b.y-mu;
+    b.r=(b.rx*b.rx)+(b.ry*b.ry);
+    b.r= Math.sqrt(b.r);
+   
+    // if (b.r<=80) {b.a=50+Math.random()*10;}
+    // else{b.a=20;}
+// b.a=25-(b.r/70);
+if (b.r<=80) 
+{
+b.dr=80-b.r;
+b.kdx=b.rx/50;
+b.kdy=b.ry/50;
+b.x=b.x+b.kdx*b.dr;
+b.y=b.y+b.kdy*b.dr;
+console.log("b.kdx"+b.kdx)
+console.log("b.kdy"+b.kdy)
+console.log("b.dr"+b.dr)
+
+}
+   }
+   }
+
+window.addEventListener("mousemove",p)
+setInterval(draw,32)
+</script>
+</body>
+</html>
