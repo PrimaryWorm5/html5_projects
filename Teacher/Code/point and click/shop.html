@@ -6,10 +6,10 @@
 <body>
 <style type="text/css">
  
-body{background-image: url('street.png');background-size: 110%;background-repeat: no-repeat;}
+body{background-image: url('shop.gif');background-size: 100%;background-repeat: no-repeat;background-position: 0px -100px;}
 	#hero{
-		width: 200px;
-		height: 395px;
+		width: 300px;
+		height: 595px;
 		position: fixed;
 		background-size: 100%;
 		left: 0px;
@@ -27,13 +27,32 @@ body{background-image: url('street.png');background-size: 110%;background-repeat
 		top: 2150px;
 		cursor: pointer;
 	}
+	#dialog{
+		width: 350px;
+		height: 200px;
+		border-radius: 20px;
+		background-color:gray;
+		opacity: 0.9; 
+		position: fixed;
+		right: 100px;
+		top: 50px;
+		visibility: hidden;
+	}
+	.bt{width: 100px;
+		height: 30px;
+		opacity: 0.6;
+	}
 </style>
 <div id="hero"></div>
+<div id="dialog">
+	<center><div id="text"></div>
+	<br><button class="bt">Да</button><button class="bt">Нет</button></center>
+</div>
 <div id="shop" onclick="shop()"></div>
 <script type="text/javascript">
 window.addEventListener('click',move)
 var x = 0;
-var y = 2600;
+var y = 100;
 var vx= 0;
 var vy= 0;
 var dx= 0;
@@ -53,11 +72,12 @@ var my = 0;
  
  
      function draw(){
-     	if(my>2800-350){
+     	if(my>600-350){
      	x = x+(-vx);
-    	y = y+(-vy);}
+    	}
+    	if(x>600){x=600;document.getElementById('hero').style.backgroundImage = "url(idle.png)";dialog()}
         document.getElementById('hero').style.left = x-50+"px"
-        document.getElementById('hero').style.top = y-350+"px"
+        document.getElementById('hero').style.top = 200+y+"px"
         if(x>mx && x<mx+25){
         vx = 0;
         document.getElementById('hero').style.backgroundImage = "url(idle.png)"
@@ -73,12 +93,12 @@ var my = 0;
 		else{document.getElementById('hero').style.transform = "rotateY(0deg)"}}
     	
  	function shop(){
- 		var conf = confirm("Войти в магазин")
- 		if(conf){
- 		document.location='shop.html'}
+ 		document.location='shop.html'
  	}
  
- 
+ 	function dialog(){
+ 		document.getElementById('dialog').style.visibility = "visible"
+ 	}
     
     setInterval(draw,32)
 </script>
