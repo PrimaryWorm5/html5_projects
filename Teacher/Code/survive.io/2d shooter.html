@@ -25,8 +25,15 @@ var rightPressed = false;
 var leftPressed = false;
 var upPressed = false;
 var downPressed = false;
+var tree = new Image();
+    tree.src = "tree.png"
+var box = new Image();
+    box.src = "box.png"
+
+
+
 function draw(){
-	ctx.clearRect(0,0,innerWidth,innerHeight)
+	// ctx.clearRect(0,0,innerWidth,innerHeight)
 	ctx.beginPath()
 	ctx.arc(x,y,30,hero_rotate,hero_rotate+6.2)
 	ctx.fillStyle = "green"
@@ -34,6 +41,15 @@ function draw(){
 	ctx.lineWidth = 5
 	// ctx.lineTo(mx,my)
 	ctx.stroke()
+	for(var i=0;i<countshots;i++){
+		var s = shots[i];
+		ctx.beginPath()
+		ctx.arc(s.x,s.y,5,0,7)
+		ctx.fill()
+		s.x+=s.vx;
+		s.y+=s.vy;
+		s.vx=1
+	}
 	if (rightPressed){
 		x+=3
 	}
@@ -53,17 +69,28 @@ function draw(){
 	if(dx>=0 && dy>=0){atan+=180;}
 	else if(dx>=0 && dy<=0){atan-=180}
 		hero_rotate=atan/60
-	bg()
 }
+var counttrees = 10;
+var countboxes = 5;
+var countshots = 1;
+var trees = []
+var boxes = []
+var shots = []
+for(var i=0;i<counttrees;i++){
+	trees.push({x:Math.random()*innerWidth-100,y:Math.random()*innerHeight-100,})}
+for(var i=0;i<countboxes;i++){
+	boxes.push({x:Math.random()*innerWidth-100,y:Math.random()*innerHeight-100,})}
+for(var i=0;i<countshots;i++){
+	shots.push({x:x,y:y,vx:0,vy:0})}
 function bg(){
-		ctx.beginPath()
-	ctx.arc(350,300,30,0,7)
-	ctx.fillStyle = "lightgreen"
-	ctx.fill()
-	ctx.beginPath()
-	ctx.arc(350,300,10,0,7)
-	ctx.fillStyle = "brown"
-	ctx.fill()
+ctx.clearRect(0,0,innerWidth,innerHeight)
+for(var i =0;i<counttrees;i++){
+	var t = trees[i];
+ctx.drawImage(tree, t.x,t.y,200,200);}
+for(var i =0;i<countboxes;i++){
+	var b = boxes[i];
+ctx.drawImage(box, b.x,b.y,100,100);}
+draw()
 }
 function mouse(){
 mx = event.x;
@@ -97,7 +124,7 @@ function keyUp(){
     	upPressed = false;
     }
 }
-setInterval(draw,32)
+setInterval(bg,32)
 </script>
 </body>
 </html>
