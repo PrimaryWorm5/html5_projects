@@ -22,7 +22,8 @@ my = 0,
 dx = 0,
 dy = 0,
 r = 0,
-hv=3;
+hv=3,
+sprint=100;
 var rightPressed = false;
 var leftPressed = false;
 var upPressed = false;
@@ -51,13 +52,8 @@ function draw(){
 		ctx.fill()
 		s.x+=s.vx;
 		s.y+=s.vy;
-		if(	s.x>b.x+200&&
-			s.y>b.y+200&&
-			b.x>-2+s.x+2&&
-			b.y>-2+s.y+2
-			){s.x=-1000}
 	}
-	if(x>innerWidth/2-100&&x<innerWidth/2+100){hv=1.7}else{hv=3}
+	// if(x>innerWidth/2-100&&x<innerWidth/2+100){hv=1.7}else{hv=3}
 	if (rightPressed){
 		x+=hv
 	}
@@ -77,6 +73,9 @@ function draw(){
 	if(dx>=0 && dy>=0){atan+=180;}
 	else if(dx>=0 && dy<=0){atan-=180}
 		hero_rotate=atan/60
+	if(sprint<0){hv=3;}
+	if(hv==3){sprint+=0.4}else{sprint--}
+	if(sprint>=100){sprint=100}
 }
 var counttrees = 10;
 var countboxes = 5;
@@ -100,6 +99,14 @@ ctx.lineTo(innerWidth/2-50,innerHeight)
 ctx.lineTo(innerWidth/2+100,innerHeight)
 ctx.lineTo(innerWidth/2+150,0)
 ctx.fillStyle = '#64958f'
+ctx.fill()
+ctx.beginPath()
+ctx.rect(55,55,sprint*5,20);
+ctx.fillStyle="#407088"
+ctx.fill()
+ctx.beginPath()
+ctx.rect(50,50,sprint*5,20);
+ctx.fillStyle="#70adb5"
 ctx.fill()
 for(var i =0;i<counttrees;i++){
 	var t = trees[i];
@@ -126,6 +133,8 @@ function keyDown() {
     else if(event.keyCode == 87) {
     	upPressed = true;
     }
+    if(sprint>0){
+    if(event.keyCode==16){hv=6}}else{hv=3}
 }
 function keyUp(){
 	if(event.keyCode == 68) {
@@ -139,7 +148,8 @@ function keyUp(){
     }
     else if(event.keyCode == 87) {
     	upPressed = false;
-    }
+    	}
+    if(event.keyCode==16){hv=3}
 }
 function shot(){
 	countshots++

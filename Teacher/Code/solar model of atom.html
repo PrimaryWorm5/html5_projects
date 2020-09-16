@@ -24,6 +24,8 @@
         vy: (Math.random()-0.5)*5,
         xd: ball.x - x,
         yd: ball.y - y,
+        r:10,
+        p:0,
     })
 }
  
@@ -36,7 +38,7 @@
         for(var i =0; i<countBall;i++){
         var b = ball[i];
         ctx.moveTo(b.x,b.y)
-        ctx.arc(b.x,b.y,10,0,7);
+        ctx.arc(b.x,b.y,b.r,0,7);
         }
         ctx.fill()
         animate()
@@ -51,6 +53,9 @@
             var b = ball[i];
         b.xd=x-b.x
         b.yd=y-b.y
+        b.p = Math.sqrt((b.xd**2)+(b.yd**2))
+        b.r = (5-(b.p/300))*3
+        if(b.r<0){b.r=0}
         b.vx = b.vx+b.xd/b.velocity
         b.vy = b.vy+b.yd/b.velocity
         b.x = b.x + b.vx;
