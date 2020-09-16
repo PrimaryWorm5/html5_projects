@@ -46,7 +46,7 @@ body{background-image: url('shop.gif');background-size: 100%;background-repeat: 
 <div id="hero"></div>
 <div id="dialog">
 	<center><div id="text"></div>
-	<br><button class="bt">Да</button><button class="bt">Нет</button></center>
+	<br><button onclick="yes()" class="bt">Да</button><button onclick="no()" class="bt">Нет</button></center>
 </div>
 <div id="shop" onclick="shop()"></div>
 <script type="text/javascript">
@@ -90,16 +90,42 @@ var my = 0;
 		if(x>=mx){
 			document.getElementById('hero').style.transform = "rotateY(180deg)"
 		}
-		else{document.getElementById('hero').style.transform = "rotateY(0deg)"}}
+		else{document.getElementById('hero').style.transform = "rotateY(0deg)"}
+			// if(reply==true){
+ 		// 		text="Что да? Ты глупый?"
+ 		// 		if(reply==true){text="Оно и видно<br><i>Конец диалога</i>"}
+ 		// 		else{text="Тогда что тебе нужно, уборная?"
+ 		// 		if (reply==true) {text="Уборной нет<br><i>Конец диалога</i>"}else{text="Помощь?"
+ 		// 		if (reply==true) {text="Хорошо"}
+ 		// 		else{text="Не морочь мне голову!"}
+ 		// 	}}
+			// }
+			// else if(reply==false){text="Ок<br><i>Конец диалога</i>"}
+ 		document.getElementById('text').innerHTML = text
+	}
     	
  	function shop(){
  		document.location='shop.html'
  	}
- 
+ 	var yesr =2;
+ 	var nor =2;
+ 	var text = 'Что нужно?'
  	function dialog(){
  		document.getElementById('dialog').style.visibility = "visible"
+
  	}
-    
+    function yes(){yesr*=2;
+if(yesr==4 && nor==2){text="Что да? Ты глупый?"}
+if(yesr==8 && nor==2){text="Оно и видно<br><i>Конец диалога</i>"}
+if(yesr==8 && nor==4){text=text="Уборной нет<br><i>Конец диалога</i>"}
+if(yesr==8 && nor==8){text="Хорошо"}
+    }
+    function no(){nor*=2;
+if(nor==4 && yesr==2){text="Ок<br><i>Конец диалога</i>"}
+if(nor==4 && yesr==4){text="Тогда что тебе нужно, уборная?"}
+if(nor==8 && yesr==4){text="Помощь?"}
+if(nor==16&& yesr==4){text="Не морочь мне голову!"}
+    }
     setInterval(draw,32)
 </script>
 </body>

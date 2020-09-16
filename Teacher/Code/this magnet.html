@@ -20,7 +20,7 @@ canvas.width = window.innerWidth-40;
 canvas.height = window.innerHeight-40;
 
 var ball = [];
-var countBall = 1000
+var countBall = 100
 
 for(var i = 0; i<countBall;i++){
 ball.push({
@@ -39,7 +39,7 @@ ctx.beginPath()
 for(var i = 0; i<countBall;i++){
 var b = ball[i];
 ctx.moveTo(b.x,b.y)
-ctx.arc(b.x,b.y,30,0,7);
+ctx.arc(b.x,b.y,5,0,7);
 ctx.fillStyle="rgb("+b.cr+","+b.cg+","+b.cb+")"
 }
 ctx.fill()
