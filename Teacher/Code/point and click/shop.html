@@ -17,16 +17,6 @@ body{background-image: url('shop.gif');background-size: 100%;background-repeat: 
 		background-repeat: no-repeat;
 		background-image: url('idle.png');
 	}
-	#shop{
-		width: 180px;
-		height: 320px;
-		background-color: white;
-		position: fixed;
-		opacity: 0.1;
-		left: 4140px;
-		top: 2150px;
-		cursor: pointer;
-	}
 	#dialog{
 		width: 350px;
 		height: 200px;
@@ -51,7 +41,7 @@ body{background-image: url('shop.gif');background-size: 100%;background-repeat: 
 <div id="shop" onclick="shop()"></div>
 <script type="text/javascript">
 window.addEventListener('click',move)
-var x = 0;
+var x = 300;
 var y = 100;
 var vx= 0;
 var vy= 0;
@@ -76,6 +66,7 @@ var my = 0;
      	x = x+(-vx);
     	}
     	if(x>600){x=600;document.getElementById('hero').style.backgroundImage = "url(idle.png)";dialog()}
+    	if(x<280){document.location='123.html'}
         document.getElementById('hero').style.left = x-50+"px"
         document.getElementById('hero').style.top = 200+y+"px"
         if(x>mx && x<mx+25){
