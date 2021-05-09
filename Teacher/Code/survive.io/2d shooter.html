@@ -33,8 +33,30 @@ var tree = new Image();
 var box = new Image();
     box.src = "box.png"
 
-
-
+var counttrees = 10;
+var countboxes = 5;
+var countshots = 0;
+var trees = []
+var boxes = []
+var shots = []
+var countenemy = 2
+var enemy = []
+var sec = 0
+var countshotsen = 2
+var shotsen = []
+for(var i=0;i<counttrees;i++){
+	trees.push({x:Math.random()*innerWidth-200,y:Math.random()*innerHeight-200,})}
+for(var i=0;i<countboxes;i++){
+	boxes.push({x:Math.random()*innerWidth-200,y:Math.random()*innerHeight-200,})}
+for(var i=0;i<countshots;i++){
+	shots.push({x:x,y:y,vx:0,vy:0,distance:0})}
+for (var i = 0;i <countenemy;i++) {
+enemy.push({x:Math.random()*innerWidth-10,y:Math.random()*innerHeight-10,health:100,vx:-5+Math.random()+10,vy:-5+Math.random()+10,dx:0,dy:0,d:0})
+}
+for (var i = 0;i<countshotsen;i++){
+shotsen.push({x:0,y:0,vx:0,vy:0,dx:0,dy:0})
+}
+var shotdelay = 0;
 function draw(){
 	// ctx.clearRect(0,0,innerWidth,innerHeight)
 	ctx.beginPath()
@@ -42,17 +64,66 @@ function draw(){
 	ctx.fillStyle = "green"
 	ctx.fill()
 	ctx.lineWidth = 5
-	// ctx.lineTo(mx,my)
 	ctx.stroke()
 	for(var i=0;i<countshots;i++){
 		var s = shots[i];
-		var b = boxes[i];
 		ctx.beginPath()
 		ctx.arc(s.x,s.y,5,0,7)
+		ctx.font="20px Verdana"
+		ctx.fillText(s.distance,s.x+5,s.y)
 		ctx.fill()
 		s.x+=s.vx;
 		s.y+=s.vy;
 	}
+		for (var i = 0;i<countenemy;i++){
+		var e = enemy[i]
+		ctx.beginPath()
+	    ctx.arc(e.x,e.y,30,0,7)
+	    ctx.fillStyle = "red"
+	    ctx.fill()
+	    ctx.lineWidth = 5
+	    ctx.stroke()
+	    e.x += e.vx
+	    e.y += e.vy
+	    if (e.x>innerWidth-50) {
+	    	e.vx = -e.vx 
+	    }
+	    if (e.x<30) {
+	    	e.vx = -e.vx 
+	    }
+	    if (e.y>innerHeight-50) {
+	    	e.vy = -e.vy 
+	    }
+	    if (e.y<30) {
+	    	e.vy = -e.vy 
+	    }
+	   }
+	 //   shotdelay++
+	 //   if(shotdelay>156){
+		// shotsen.push({x:e.x,y:e.y,vx:e.dx,vy:e.dy});
+	 //   	shotdelay=0;console.log(shotsen[i])}
+	for(var i=0;i<countshotsen;i++){
+		var sn = shotsen[i];
+		ctx.beginPath()
+		ctx.arc(sn.x,sn.y,5,0,7)
+		ctx.fillStyle='red'
+		ctx.fill()
+	sn.x += sn.vx
+	sn.y += sn.vy
+	for(var k=0;k<countenemy;k++){
+		var e=enemy[k];
+			for(var sb = 0;sb<countshots;sb++){
+			var sm = shots[sb]
+			e.dx = sm.x-e.x
+			e.dy = sm.y-e.y
+			e.d = Math.sqrt((e.x*e.x)+(e.dy*e.dy))
+			sm.distance=e.d
+			if(e.d<50){alert('s')}
+		}
+	}
+	}
+	 
+
 	// if(x>innerWidth/2-100&&x<innerWidth/2+100){hv=1.7}else{hv=3}
 	if (rightPressed){
 		x+=hv
@@ -77,18 +148,7 @@ function draw(){
 	if(hv==3){sprint+=0.4}else{sprint--}
 	if(sprint>=100){sprint=100}
 }
-var counttrees = 10;
-var countboxes = 5;
-var countshots = 0;
-var trees = []
-var boxes = []
-var shots = []
-for(var i=0;i<counttrees;i++){
-	trees.push({x:Math.random()*innerWidth-200,y:Math.random()*innerHeight-200,})}
-for(var i=0;i<countboxes;i++){
-	boxes.push({x:Math.random()*innerWidth-200,y:Math.random()*innerHeight-200,})}
-for(var i=0;i<countshots;i++){
-	shots.push({x:x,y:y,vx:0,vy:0})}
+
 function bg(){
 ctx.clearRect(0,0,innerWidth,innerHeight)
 ctx.fillStyle="#faf3dd"
@@ -153,8 +213,31 @@ function keyUp(){
 }
 function shot(){
 	countshots++
-	shots.push({x:x,y:y,vx:-dx/10,vy:-dy/10})
+	shots.push({x:x,y:y,vx:-dx/100,vy:-dy/100})
 }
+function movingenemy(){
+	sec += 1
+	for(var b = 0;b<countenemy;b++){
+	for(var i = 0;i<countshotsen;i++){
+	var sn = shotsen[i]
+	var e = enemy[b++]
+	sn.x=e.x
+	sn.y=e.y
+	sn.dx = x-e.x
+	sn.dy = y-e.y
+	sn.vx=sn.dx/75;
+	sn.vy=sn.dy/75;
+	}}
+	if (sec==5) {
+	for(var i = 0;i<countenemy;i++){
+	var e = enemy[i]
+	e.vx = -5+Math.random()*10
+	e.vy = -5+Math.random()*10
+	sec = 0
+}
+}
+}
+setInterval(movingenemy,10000)
 setInterval(bg,32)
 </script>
 </body>

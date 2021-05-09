@@ -61,9 +61,6 @@
 		var ey = 0;
 		var evx = -5+Math.random()*10
 		var evy = 50
-		var lx = 100;
-		var ly = -500;
-		var lw = 5;
 		var score = 0
 		var damage = 0
 		var hp = [
@@ -72,6 +69,13 @@
 		"♥",
 		""
 		]
+		var laser=[]
+		var countlaser = 0;
+		for(var i = 0;i<countlaser;i++){
+			laser.push({
+			lx:event.x,
+			ly:event.y
+		})}
 		function move(){
 		var mx = event.x-75;
 		var my = event.y;
@@ -86,23 +90,26 @@
 			}
 		}
 		function draw_32(){
+			for(var i =0; i<countlaser;i++){
+			var l = laser[i]
+			l.ly+=-25
+
 			if(
-				ex<=lx+lw && 
-				ey<=ly+40 && 
-				lx<=ex+100 && 
-				ly<=ey+40){
-				ly=-200;ey=0;ex=Math.random()*innerWidth - 200;evx=-5+Math.random()*10;score++;lw+=0.5;
+				ex<=l.lx+5 && 
+				ey<=l.ly+40 && 
+				l.lx<=ex+100 && 
+				l.ly<=ey+40){
+				l.ly=-200;ey=0;ex=Math.random()*innerWidth - 200;evx=-5+Math.random()*10;score++;
 			}
 			
 
-			ly+=-25
-		document.getElementById('laser').style.left = lx+'px'
-		document.getElementById('laser').style.width = lw+'px'
+		document.getElementById('laser').style.left = l.lx+'px'
 		document.getElementById('enemy').style.top = ey+'px'
 		document.getElementById('enemy').style.left = ex+'px'
-		document.getElementById('laser').style.top = ly+'px'
+		document.getElementById('laser').style.top = l.ly+'px'
 		document.getElementById('score').innerHTML ="Score:"+score 
 		document.getElementById('hp').innerHTML =hp[damage]
+			}
 		}
 		function draw_8(){
 			ex+=evx
@@ -112,11 +119,11 @@
 		document.getElementById('enemy').style.top = ey+'px'
 		}
 		function click(){
-			if(ly<-100){
-			lx = event.x
-			ly = event.y
-			}
-					}
+			countlaser++
+			laser.push({
+			lx:event.x,
+			ly:event.y
+		})			}
 		setInterval(draw_8,1000)
 		setInterval(draw_32,50)
 	</script>

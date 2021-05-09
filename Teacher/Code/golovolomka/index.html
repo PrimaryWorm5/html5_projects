@@ -13,7 +13,9 @@
 		#pin{position: absolute;}
 		#table{position: absolute;}
 		#binary{position: absolute;right: 0px;}
+		#hide{width: 50px;height: 50px;position: absolute;bottom: 0px;right: 0px;cursor: pointer;}
 	</style>
+<div id="hide" onclick="sq()"></div>
 <img id="pin" src="pin.png">
 <table id="table">
 	<tr>
@@ -67,9 +69,29 @@
 </table>
 <center>
 	<div>
-		<input type="number" name="" placeholder="PIN">
-		<button>Ввести PIN</button>
+		<input type="number" name="" id="pinin" placeholder="PIN">
+		<button onclick="pininput()">Ввести PIN</button>
 	</div>
 </center>
+<script type="text/javascript">
+	function pininput(){
+		var a = document.getElementById('pinin').value;
+		a=Number(a)
+		if(a==1264){
+			alert("Правильно, нажми нижний правый угол")
+		}
+	}
+	function sq(){
+		document.body.innerHTML = "<center><h1>Ты всё удалил</h1></center><br><button onclick='buttonadd()'>+</button>"
+	}
+	var i = 0;
+	var button = "<button onclick='this.remove()'>-</button>"
+	function buttonadd(){
+		for(i=0;i<10;i++){
+		button+="<button style='position:absolute' onclick='this.remove();this.style.left=/"Math.random()*1000+'px'"/this.style.top=/"Math.random()*500+'px'"/'>-</button>"
+		document.body.innerHTML = button
+		}
+	}
+</script>
 </body>
 </html>

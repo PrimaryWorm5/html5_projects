@@ -23,7 +23,7 @@ body{background-image: url('street.png');background-size: 110%;background-repeat
 	}
 	#dialog{
 		width: 850px;
-		height: 500px;
+		height: 300px;
 		border-radius: 20px;
 		background-color:gray;
 		opacity: 0.9; 
@@ -37,11 +37,11 @@ body{background-image: url('street.png');background-size: 110%;background-repeat
 	}
 </style>
 <div id="hero"></div>
-<div id="dialog">Машина больше никуда не поедет, нужно найти инструменты. <br>Думаю в местном магазине должно быть что-то</div>
-<img id="car" src="car.png">
+<div id="dialog">Сейчас бы разобраться как починить её...</div>
+<div id="dcar"><img id="car" src="car.png"></div>
 <script type="text/javascript">
 window.addEventListener('click',move)
-var x = 500;
+var x = 4100;
 var y = 2600;
 var vx= 0;
 var vy= 0;
@@ -63,6 +63,7 @@ var my = 0;
  
      function draw(){
      	if(x>4150){document.location="shop.html"}
+     		if(x<800){document.getElementById('dcar').innerHTML = "<img id='car' src='carf.png'>";document.getElementById('dialog').innerHTML = "Отлично, можно ехать"}
      	if(my>2800-350){
      	x = x+(-vx);
     	y = y+(-vy);}

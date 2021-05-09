@@ -49,7 +49,7 @@ var dx= 0;
 var dy= 0;
 var mx = 0;
 var my = 0;
- 
+var tools = 0;
      function move(){
      	document.getElementById('hero').style.backgroundImage = "url(walk.gif)"
         mx = event.x;
@@ -66,7 +66,9 @@ var my = 0;
      	x = x+(-vx);
     	}
     	if(x>600){x=600;document.getElementById('hero').style.backgroundImage = "url(idle.png)";dialog()}
-    	if(x<280){document.location='123.html'}
+    	if(x<280){if(tools==1){document.location="123later.html"}
+		else{    		document.location='123.html'}
+    	}
         document.getElementById('hero').style.left = x-50+"px"
         document.getElementById('hero').style.top = 200+y+"px"
         if(x>mx && x<mx+25){
@@ -109,13 +111,15 @@ var my = 0;
 if(yesr==4 && nor==2){text="Что да? Ты глупый?"}
 if(yesr==8 && nor==2){text="Оно и видно<br><i>Конец диалога</i>"}
 if(yesr==8 && nor==4){text=text="Уборной нет<br><i>Конец диалога</i>"}
-if(yesr==8 && nor==8){text="Хорошо"}
+if(yesr==8 && nor==8){text="Ты наверное из тех что ломают машины? "}
+if(yesr==16 && nor==8){text="Держи, можешь не возвращать<br><i>Получены инструменты</i>";tools=1;}
     }
     function no(){nor*=2;
 if(nor==4 && yesr==2){text="Ок<br><i>Конец диалога</i>"}
 if(nor==4 && yesr==4){text="Тогда что тебе нужно, уборная?"}
 if(nor==8 && yesr==4){text="Помощь?"}
 if(nor==16&& yesr==4){text="Не морочь мне голову!"}
+if(nor==16&& yesr==8){text="Не морочь мне голову!"}
     }
     setInterval(draw,32)
 </script>
